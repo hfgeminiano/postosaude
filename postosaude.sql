@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Ago-2021 às 02:09
+-- Tempo de geração: 11-Ago-2021 às 03:08
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.9
 
@@ -18,79 +18,42 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `postosaude`
+-- Banco de dados: `postosaude2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `consulta`
+-- Estrutura da tabela `posto`
 --
 
-CREATE TABLE `consulta` (
+CREATE TABLE `posto` (
   `id` int(11) NOT NULL,
-  `dia` date DEFAULT NULL,
-  `horario` time NOT NULL,
-  `estado` varchar(10) DEFAULT NULL,
-  `tipo_paciente` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `id_dependente` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `dependentes`
---
-
-CREATE TABLE `dependentes` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(100) DEFAULT NULL,
-  `nascimento` date DEFAULT NULL,
-  `sexo` varchar(9) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(100) NOT NULL,
+  `nome` varchar(45) DEFAULT NULL,
+  `logradouro` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `senha` varchar(100) DEFAULT NULL,
-  `telefone` varchar(11) DEFAULT NULL,
-  `sexo` varchar(9) DEFAULT NULL,
-  `nascimento` date DEFAULT NULL,
-  `nivel` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `telefone` varchar(45) DEFAULT NULL,
+  `bairro` varchar(45) DEFAULT NULL,
+  `numero` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `posto`
+--
+
+INSERT INTO `posto` (`id`, `nome`, `logradouro`, `email`, `telefone`, `bairro`, `numero`) VALUES
+(1, 'São João', 'Rua 22', 'jj@jj.com', '00000000', 'São João', 22),
+(2, 'Nova Pirapora', 'Rua Newton José Lopes', '12@12.com', '00000000', 'Nova Pirapora', 2),
+(3, 'São geraldo', '12457892', 'psf@psf.com', '123456749', '1234256', 789);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `consulta`
+-- Índices para tabela `posto`
 --
-ALTER TABLE `consulta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_dependente` (`id_dependente`);
-
---
--- Índices para tabela `dependentes`
---
-ALTER TABLE `dependentes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_usuario` (`id_usuario`);
-
---
--- Índices para tabela `usuarios`
---
-ALTER TABLE `usuarios`
+ALTER TABLE `posto`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -98,39 +61,10 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de tabela `consulta`
+-- AUTO_INCREMENT de tabela `posto`
 --
-ALTER TABLE `consulta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT de tabela `dependentes`
---
-ALTER TABLE `dependentes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT de tabela `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `consulta`
---
-ALTER TABLE `consulta`
-  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
-  ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`id_dependente`) REFERENCES `dependentes` (`id`);
-
---
--- Limitadores para a tabela `dependentes`
---
-ALTER TABLE `dependentes`
-  ADD CONSTRAINT `dependentes_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
+ALTER TABLE `posto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
