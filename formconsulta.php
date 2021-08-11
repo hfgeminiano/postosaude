@@ -1,6 +1,6 @@
 <?php
-require("cabecalho.php");
 require("logado.php");
+require("cabecalho.php");
 
 ?>
 
@@ -10,29 +10,27 @@ require("logado.php");
             <div class="card px-12 py-16">
                 <div class="card-body">
                     <h6 class="card-title mb-3 text-center">Agendar Consulta</h6>
-                    <div class="alert alert-primary" role="alert">
-                        <?php
-                        if (isset($_SESSION['msg'])) {
-                            echo $_SESSION['msg'];
-                            unset($_SESSION['msg']);
-                        }
-                        if (isset($_SESSION['msgcad'])) {
-                            echo $_SESSION['msgcad'];
-                            unset($_SESSION['msgcad']);
-                        }
-                        ?>
-                    </div>
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    if (isset($_SESSION['msgcad'])) {
+                        echo $_SESSION['msgcad'];
+                        unset($_SESSION['msgcad']);
+                    }
+                    ?>
                     <h6 class="information mt-4">Escolha o dia</h6>
 
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input type="text" class="form-control item" id="dia" name="dia" placeholder="Dia">
+                                <input type="date" class="form-control item" id="dia" name="dia" placeholder="Dia">
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input type="text" class="form-control item" id="horario" name="horario" placeholder="Horario">
+                                <input type="text" class="form-control item" id="motivo" name="motivo" placeholder="Motivo">
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -52,15 +50,16 @@ require("logado.php");
                                 <?php
                                 require("conexao.php");
                                 $id_paciente = $_SESSION['id'];
-                                $sql = "SELECT dependentes.nome,dependentes.id FROM dependentes WHERE dependentes.id_usuario = $id_paciente";
-                                $usuario = "SELECT usuarios.nome,usuarios.id FROM usuarios WHERE usuarios.id = $id_paciente";
+                                $sql = "SELECT dependentes.nome,dependentes.id FROM dependentes WHERE dependentes.usuario_id = $id_paciente";
+                                $usuario = "SELECT usuario.nome,usuario.id FROM usuario WHERE usuario.id = $id_paciente";
+                                $id_psf = "SELECT usuario.posto_id FROM usuario WHERE usuario.id = $id_paciente";
+
 
                                 $executa = mysqli_query($conn, $usuario);
                                 echo $id_paciente;
                                 while ($linha = mysqli_fetch_array($executa)) {
                                     echo "<option value=" . $linha['id'] . ">" . $linha['nome'] . "</option>";
                                 }
-
                                 $executa = mysqli_query($conn, $sql);
                                 echo $id_paciente;
                                 while ($linha = mysqli_fetch_array($executa)) {
@@ -69,7 +68,6 @@ require("logado.php");
                                 ?>
                             </select>
                         </div>
-
                     </div>
                     <input type="submit" name="btnCadastrar" class="btn btn-block create-account btn-primary" value="Cadastrar">
                 </div>

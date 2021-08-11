@@ -1,5 +1,4 @@
 <?php
-session_start();
 ob_start();
 $btnCadastrar = filter_input(INPUT_POST, 'btnCadastrar', FILTER_SANITIZE_STRING);
 if ($btnCadastrar) {
@@ -40,7 +39,7 @@ if ($btnCadastrar) {
         '" . $dados['telefone'] . "',
         '" . $dados['sexo'] . "',
         '" . $dados['nascimento'] . "',
-        '" . 0 . "',
+        '" . 1 . "',
         '" . $dados['cpf'] . "',
         '" . $dados['posto'] . "',
         '" . $dados['logradouro'] . "',
@@ -57,11 +56,7 @@ if ($btnCadastrar) {
     }
 }
 ?>
-<div class="img">
-    <img src="img/bg.png">
-</div>
-
-<div class="login-content">
+<div class="container mt-5 mb-8">
     <form method="POST" action="">
 
         <?php
@@ -70,8 +65,8 @@ if ($btnCadastrar) {
             unset($_SESSION['msg']);
         }
         ?>
-        <h2 class="title">Formulário de Cadastro</h2>
-        <img src="img/cad.png">
+        <h2 class="title text-center">Formulário de Cadastro</h2>
+        <img src="../img/cad.png" width="10%" class="rounded mx-auto d-block">
         <div class="form-icon">
             <span><i class="icon icon-user"></i></span>
         </div>
@@ -128,7 +123,7 @@ if ($btnCadastrar) {
             <input type="text" class="form-control item" name="numero" id="numero" placeholder="Nº">
         </div>
         <div class="d-grid">
-            <input type="submit" name="btnCadastrar" class="btn btn-lg btn-primary" value="Cadastrar" type="submit">
+            <input type="submit" name="btnCadastrar" class="btn btn-lg btn-primary" name="btnCadastrar" value="Cadastrar" type="submit">
         </div>
     </form>
 </div>

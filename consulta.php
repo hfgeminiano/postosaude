@@ -3,27 +3,27 @@
 require("logado.php");
 
 $dia = $_POST['dia'];
-$horario = $_POST['horario'];
 $dependente = $_POST['paciente'];
+$motivo = $_POST['motivo'];
 $id_paciente = $_SESSION['id'];
 $tipo_paciente = $_POST['tipo'];
+$id_psf = $_SESSION['posto_id'];
 include_once 'conexao.php';
 
 
 if ($tipo_paciente == 0) {
-    $sql = "INSERT INTO consulta(dia,horario,estado,tipo_paciente,id_usuario) VALUES ";
-    $sql .= "('$dia','$horario','Agendado','$tipo_paciente','$id_paciente')";
+    $sql = "INSERT INTO consulta(dia,estado,motivo,tipo_paciente,posto_id,usuario_id) VALUES ";
+    $sql .= "('$dia','Pre Agendado','$motivo','$tipo_paciente','$id_psf','$id_paciente')";
 } else {
-    $sql = "INSERT INTO consulta(dia,horario,estado,tipo_paciente,id_usuario,id_dependente) VALUES ";
-    $sql .= "('$dia','$horario','Agendado','$tipo_paciente','$id_paciente','$dependente')";
+    $sql = "INSERT INTO consulta(dia,estado,tipo_paciente,motivo,posto_id,dependentes_id,usuario_id) VALUES ";
+    $sql .= "('$dia','Pre Agendado','$tipo_paciente','$motivo','$id_psf','$dependente','$id_paciente')";
 }
 
 
 mysqli_query($conn, $sql) or die("Erro ao tentar cadastrar registro");
-echo $sql;
 
 if (mysqli_close($conn)) {
-    $_SESSION['msgcad'] = "Cadastrado com sucesso";
+    $_SESSION['msgcad'] = "<div class='alert alert-primary'>Cadastrado com Sucesso!</div>";
     header("Location: formconsulta.php");
 } else {
     $_SESSION['msg'] = "Erro ao cadastrar";

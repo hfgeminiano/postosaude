@@ -1,10 +1,10 @@
 <div class="img">
-    <img src="img/bg.png">
+    <img src="../img/bg.png">
 </div>
 <div class="login-content">
     <form method="POST" action="valida.php">
         <h2 class="title">Consulta Fácil</h2>
-        <img src="img/avatar.png">
+        <img src="../img/avatar.png">
         <h2 class="title">Acesse sua Conta</h2>
         <?php
         if (isset($_SESSION['msg'])) {
@@ -27,9 +27,6 @@
         </div>
         <div class="d-grid mb-3">
             <button class="btn btn-lg btn-primary" name="btnAcessar" value="acessar" type="submit">Acessar</button>
-        </div>
-        <div class="d-grid">
-            <a href="cadusuario.php" class=" btn btn-lg btn-primary">Cadastrar</a>
         </div>
 
 
