@@ -26,11 +26,17 @@ require("cabecalho.php");
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <select class="form-select" id="tipo" name="tipo" aria-label="Default select example">
                                     <option selected disabled>Tipo de Exame</option>
                                     <option value="Sangue">Sangue</option>
                                     <option value="Urina">Urina</option>
+                                    <option value="Hemograma">Hemograma</option>
+                                    <option value="Colesterol">Colesterol</option>
+                                    <option value="Fezes">Fezes</option>
+                                    <option value="Ureia">Ureia e Creatina</option>
+                                    <option value="Eletrocardiograma">Eletrocardiograma</option>
+                                    
                                 </select>
                             </div>
                         </div>
@@ -38,7 +44,7 @@ require("cabecalho.php");
                     <div class="row">
                         <h6 class="information mt-4">Escolha o Laboratório</h6>
 
-                        <div class="mb-1">
+                        <div class="mb-2">
                             <select id="laboratorio" name="laboratorio" class="form-select" aria-label="Default select example">
                                 <option selected disabled="paciente">Selecionar Laboratório</option>
                                 <?php
@@ -56,7 +62,7 @@ require("cabecalho.php");
                         </div>
                     </div>
 
-                    <input type="submit" name="btnCadastrar" class="btn btn-block create-account btn-primary" value="Cadastrar">
+                    <input type="submit" name="btnCadastrar" class="btn btn-block create-account btn-primary" value="Agendar">
                 </div>
             </div>
         </div>

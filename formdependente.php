@@ -26,6 +26,23 @@ require("cabecalho.php");
                             <div class="form-group mb-2">
                                 <input type="date" class="form-control item" id="nascimento" name="nascimento" placeholder="Nascimento">
                             </div>
+
+                            <div class="form-group mb-2">
+                                <input type="text" class="form-control item" id="identificacao" name="identificacao" placeholder="Doc. Identificação">
+                            </div>
+
+                            <div class="form-group mb-2">
+                                <select id="parentesco" name="parentesco" class="form-select" aria-label="Default select example">
+                                    <option selected disabled="parentesco">Grau de Parentesco</option>
+                                    <option value="pai">Pai</option>
+                                    <option value="mae">Mãe</option>
+                                    <option value="pai">Cônjuge</option>
+                                    <option value="filho">Filho(a)</option>
+                                    <option value="irmao">Irmã(o)</option>
+                                    <option value="sobrinho">Sobrinho(a)</option>
+                                </select>
+                            </div>
+
                             <div class="form-group mb-2">
                                 <select id="sexo" name="sexo" class="form-select" aria-label="Default select example">
                                     <option selected disabled="Sexo">Sexo</option>

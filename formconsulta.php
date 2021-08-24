@@ -1,8 +1,12 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 <?php
 require("logado.php");
 require("cabecalho.php");
 
 ?>
+
+
 
 <div class="registration-form">
     <form method="POST" action="consulta.php">
@@ -24,17 +28,19 @@ require("cabecalho.php");
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="form-group">
-                                <input type="date" class="form-control item" id="dia" name="dia" placeholder="Dia">
+                            <div class="form-group mb-2">
+                               
+                                <input type="date" class="form-control item" id="dia" name="dia" placeholder="Dia" disabled value="<?= date("Y-m-d"); ?>">
                             </div>
                         </div>
                         <div class="col-sm-12">
-                            <div class="form-group">
-                                <input type="text" class="form-control item" id="motivo" name="motivo" placeholder="Motivo">
+                            <div class="form-group mb-2">
+                            <label for="textarea">Motivo do Atendimento</label>
+                            <textarea class="form-control" id="motivo" name="motivo" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="col-sm-12">
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <select class="form-select" id="tipo" name="tipo" aria-label="Default select example">
                                     <option selected disabled>Tipo de Paciente</option>
                                     <option value="0">Responsável</option>
@@ -44,7 +50,7 @@ require("cabecalho.php");
                         </div>
                     </div>
                     <div class="row">
-                        <div class="mb-1">
+                        <div class="mb-2">
                             <select id="paciente" name="paciente" class="form-select" aria-label="Default select example">
                                 <option selected disabled="paciente">Selecionar Paciente</option>
                                 <?php
@@ -69,7 +75,7 @@ require("cabecalho.php");
                             </select>
                         </div>
                     </div>
-                    <input type="submit" name="btnCadastrar" class="btn btn-block create-account btn-primary" value="Cadastrar">
+                    <input type="submit" name="btnCadastrar" class="btn btn-block create-account btn-primary" value="Agendar">
                 </div>
             </div>
         </div>
