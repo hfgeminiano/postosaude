@@ -21,6 +21,13 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 
+ 
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+
 
 </head>
 
@@ -44,7 +51,7 @@
               CONSULTAS
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="consultas.php">Pre Agendadas <sup><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <li><a class="dropdown-item" href="consultas.php">Consultas Pre Agendadas <sup><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       <?php
                       include 'conexao.php';
                       $id_posto = $_SESSION['posto_id'];
@@ -62,7 +69,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="agendadas.php">Agendadas<sup><span class="position-absolute top-0 middle-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <li><a class="dropdown-item" href="agendadas.php">Consultas Agendadas<sup><span class="position-absolute top-0 middle-0 start-100 translate-middle badge rounded-pill bg-danger">
                       <?php
                       include 'conexao.php';
                       $id_posto = $_SESSION['posto_id'];
@@ -80,7 +87,38 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Busca de exames</a></li>
+              <li><a class="dropdown-item" href="examespre.php">Exames Pré Agendados <sup><span class="position-absolute top-0 middle-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      <?php
+                      include 'conexao.php';
+                      $id_posto = $_SESSION['posto_id'];
+                      $sql = "SELECT COUNT(*) FROM exame WHERE exame.estado = 'pre agendado' AND exame.posto_id = $id_posto";
+                      $result = mysqli_query($conn, $sql);
+                      if ($result) {
+                        while ($item = mysqli_fetch_assoc($result)) {
+                          echo $item['COUNT(*)'];
+                        }
+                      }
+
+                      ?>
+                    </span></sup></a></li>
+
+                    <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="examesagen.php">Exames Agendados <sup><span class="position-absolute top-0 middle-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      <?php
+                      include 'conexao.php';
+                      $id_posto = $_SESSION['posto_id'];
+                      $sql = "SELECT COUNT(*) FROM exame WHERE exame.estado = 'agendado' AND exame.posto_id = $id_posto";
+                      $result = mysqli_query($conn, $sql);
+                      if ($result) {
+                        while ($item = mysqli_fetch_assoc($result)) {
+                          echo $item['COUNT(*)'];
+                        }
+                      }
+
+                      ?>
+                    </span></sup></a></li>
             </ul>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
