@@ -21,6 +21,13 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 
+ 
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+
 
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
@@ -51,7 +58,11 @@
               REQUERIMENTOS
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
               <li><a class="dropdown-item" href="consultas.php">Consultas Pré Agendadas <sup><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+=======
+              <li><a class="dropdown-item" href="consultas.php">Consultas Pre Agendadas <sup><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+>>>>>>> 62828064174834c0b719f2f749d627273554e9f7
                       <?php
                       include 'conexao.php';
                       $id_posto = $_SESSION['posto_id'];
@@ -102,7 +113,11 @@
                       ?>
                     </span></sup></a></li>
 
+<<<<<<< HEAD
               <li>
+=======
+                    <li>
+>>>>>>> 62828064174834c0b719f2f749d627273554e9f7
                 <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="examesagen.php">Exames Agendados <sup><span class="position-absolute top-0 middle-0 start-100 translate-middle badge rounded-pill bg-danger">

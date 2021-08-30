@@ -249,6 +249,7 @@ require("logado.php");
                         <!-- Card Body -->
                         <div class="card-body">
 
+<<<<<<< HEAD
                             <div class="unit w-2-3">
                                 <div class="hero-callout">
                                     <?php
@@ -284,6 +285,44 @@ require("logado.php");
                                     ?>
                                 </div>
                             </div>
+=======
+                        <div class="unit w-2-3">
+                                <div class="hero-callout">
+                                <?php
+                                
+                                    
+                                                                                
+                                    $resultado = $conn->query("SELECT consulta.dia,consulta.motivo,usuario.nome FROM consulta INNER JOIN usuario ON consulta.usuario_id = usuario.id  WHERE consulta.estado = 'agendado' AND consulta.posto_id = $id_posto");
+                                                                            
+                                        echo "<table id='dados' class='table table-bordered table-hover display'>";
+                                        echo "<thead>";
+                                        echo "<tr>";
+                                        echo "<th>Paciente</th><th>Dia</th><th>Motivo</th>";
+                                        echo "</tr>";
+                                        echo "</thead>";
+
+                                        echo "<tbody>";
+
+                                        while($linha = $resultado->fetch_array()){
+                                        
+                                        echo "<tr>";   
+                                        echo "<td>{$linha['nome']}</td>";                                              
+                                        echo "<td>{$linha['dia']}</td>";
+                                        echo "<td>{$linha['motivo']}</td>";           
+                                    
+                                    
+                                        echo "</tr>";
+
+                                        }
+                                    
+
+                                        echo "</tbody>";
+
+                                        echo "</table>";
+                                ?>
+                            </div>
+                        </div>                                
+>>>>>>> 62828064174834c0b719f2f749d627273554e9f7
 
 
                             <div class="chart-area">
@@ -302,6 +341,7 @@ require("logado.php");
                         <div class="card-body">
 
 
+<<<<<<< HEAD
                             <div class="unit w-2-3">
                                 <div class="hero-callout">
                                     <?php
@@ -339,6 +379,46 @@ require("logado.php");
                                     ?>
                                 </div>
                             </div>
+=======
+                        <div class="unit w-2-3">
+                                <div class="hero-callout">
+                                <?php
+                                
+                                    
+                                                                                
+                                    $resultado = $conn->query("SELECT consulta.id,consulta.dia,consulta.motivo,consulta.observacao,usuario.nome,medico.nome FROM consulta INNER JOIN usuario ON consulta.usuario_id = usuario.id INNER JOIN medico on consulta.medico_id = medico.id WHERE consulta.estado = 'atendido' AND consulta.posto_id = $id_posto AND consulta.tipo_paciente = 0");
+                                                                            
+                                        echo "<table id='dados2' class='table table-bordered table-hover display'>";
+                                        echo "<thead>";
+                                        echo "<tr>";
+                                        echo "<th>Paciente</th><th>Dia</th><th>Observação</th><th>Motivo</th><th>Médico</th>";
+                                        echo "</tr>";
+                                        echo "</thead>";
+
+                                        echo "<tbody>";
+
+                                        while($linha = $resultado->fetch_array()){
+                                        
+                                        echo "<tr>";   
+                                        echo "<td>{$linha[4]}</td>";                                        
+                                        echo "<td>{$linha['dia']}</td>";        
+                                        echo "<td>{$linha['observacao']}</td>";
+                                        echo "<td>{$linha['motivo']}</td>";
+                                        echo "<td>{$linha['nome']}</td>";           
+                                    
+                                    
+                                        echo "</tr>";
+
+                                        }
+                                    
+
+                                        echo "</tbody>";
+
+                                        echo "</table>";
+                                ?>
+                            </div>
+                        </div>     
+>>>>>>> 62828064174834c0b719f2f749d627273554e9f7
 
                             <div class="chart-area">
                                 <canvas id="myAreaChart"></canvas>
@@ -354,6 +434,7 @@ require("logado.php");
 </div>
 
 <script>
+<<<<<<< HEAD
     $(document).ready(function() {
         $('#dados').DataTable({
             "order": [
@@ -418,6 +499,68 @@ require("logado.php");
         });
     });
 </script>
+=======
+      $(document).ready( function () {
+        $('#dados').DataTable( {
+			"order": [[1, 'asc']],
+			language: {
+			"sEmptyTable": "Nenhum registro encontrado",
+			"sInfo": "Mostrando de _START_ at&eacute; _END_ de _TOTAL_ registros",
+			"sInfoEmpty": "Mostrando 0 at&eacute; 0 de 0 registros",
+			"sInfoFiltered": "(Filtrados de _MAX_ registros)",
+			"sInfoPostFix": "",
+			"sInfoThousands": ".",
+			"sLengthMenu": "_MENU_ resultados por p&aacute;gina",
+			"sLoadingRecords": "Carregando...",
+			"sProcessing": "Processando...",
+			"sZeroRecords": "Nenhum registro encontrado",
+			"sSearch": "Pesquisar",
+			"oPaginate": {
+				"sNext": "Pr&oacute;ximo",
+				"sPrevious": "Anterior",
+				"sFirst": "Primeiro",
+				"sLast": "&Uacute;ltimo"
+			},
+			"oAria": {
+				"sSortAscending": ": Ordenar colunas de forma ascendente",
+				"sSortDescending": ": Ordenar colunas de forma descendente"
+			}
+			}
+			} );
+      } );
+    </script>
+
+<script>
+      $(document).ready( function () {
+        $('#dados2').DataTable( {
+			"order": [[1, 'asc']],
+			language: {
+			"sEmptyTable": "Nenhum registro encontrado",
+			"sInfo": "Mostrando de _START_ at&eacute; _END_ de _TOTAL_ registros",
+			"sInfoEmpty": "Mostrando 0 at&eacute; 0 de 0 registros",
+			"sInfoFiltered": "(Filtrados de _MAX_ registros)",
+			"sInfoPostFix": "",
+			"sInfoThousands": ".",
+			"sLengthMenu": "_MENU_ resultados por p&aacute;gina",
+			"sLoadingRecords": "Carregando...",
+			"sProcessing": "Processando...",
+			"sZeroRecords": "Nenhum registro encontrado",
+			"sSearch": "Pesquisar",
+			"oPaginate": {
+				"sNext": "Pr&oacute;ximo",
+				"sPrevious": "Anterior",
+				"sFirst": "Primeiro",
+				"sLast": "&Uacute;ltimo"
+			},
+			"oAria": {
+				"sSortAscending": ": Ordenar colunas de forma ascendente",
+				"sSortDescending": ": Ordenar colunas de forma descendente"
+			}
+			}
+			} );
+      } );
+    </script>
+>>>>>>> 62828064174834c0b719f2f749d627273554e9f7
 
 
 <?php

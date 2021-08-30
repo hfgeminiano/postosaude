@@ -34,6 +34,7 @@ require("cabecalho.php");
                             </div>
 
                             <div class="form-group mb-2">
+<<<<<<< HEAD
                                 <input type="text" class="form-control item" id="identificacao" name="identificacao" placeholder="Doc. Identificação" required>
                                 <div class="invalid-feedback">
                                     Informe o documento
@@ -43,6 +44,14 @@ require("cabecalho.php");
                             <div class="form-group mb-2">
                                 <select id="parentesco" name="parentesco" class="form-select" required>
                                     <option selected disabled value="">Grau de Parentesco</option>
+=======
+                                <input type="text" class="form-control item" id="identificacao" name="identificacao" placeholder="Doc. Identificação">
+                            </div>
+
+                            <div class="form-group mb-2">
+                                <select id="parentesco" name="parentesco" class="form-select" aria-label="Default select example">
+                                    <option selected disabled="parentesco">Grau de Parentesco</option>
+>>>>>>> 62828064174834c0b719f2f749d627273554e9f7
                                     <option value="pai">Pai</option>
                                     <option value="mae">Mãe</option>
                                     <option value="pai">Cônjuge</option>
@@ -50,9 +59,12 @@ require("cabecalho.php");
                                     <option value="irmao">Irmã(o)</option>
                                     <option value="sobrinho">Sobrinho(a)</option>
                                 </select>
+<<<<<<< HEAD
                                 <div class="invalid-feedback">
                                     Informe o parentesco
                                 </div>
+=======
+>>>>>>> 62828064174834c0b719f2f749d627273554e9f7
                             </div>
 
                             <div class="form-group mb-2">
