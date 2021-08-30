@@ -7,7 +7,7 @@ require("cabecalho.php");
 ?>
 
 <div class="registration-form">
-    <form method="POST" action="exame.php">
+    <form class="needs-validation" method="POST" action="exame.php" novalidate>
         <div class="container mt-5 mb-5 justify-content-center">
             <div class="card px-12 py-16">
                 <div class="card-body">
@@ -26,21 +26,29 @@ require("cabecalho.php");
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="form-group">
-                                <select class="form-select" id="tipo" name="tipo" aria-label="Default select example">
-                                    <option selected disabled>Tipo de Exame</option>
+                            <div class="form-group mb-2">
+                                <select class="form-select" id="tipo" name="tipo" required>
+                                    <option selected disabled value="">Tipo de Exame</option>
                                     <option value="Sangue">Sangue</option>
                                     <option value="Urina">Urina</option>
+                                    <option value="Hemograma">Hemograma</option>
+                                    <option value="Colesterol">Colesterol</option>
+                                    <option value="Fezes">Fezes</option>
+                                    <option value="Ureia">Ureia e Creatina</option>
+                                    <option value="Eletrocardiograma">Eletrocardiograma</option>
                                 </select>
+                                <div class="invalid-feedback">
+                                    Selecione um tipo de exame!
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <h6 class="information mt-4">Escolha o Laboratório</h6>
 
-                        <div class="mb-1">
-                            <select id="laboratorio" name="laboratorio" class="form-select" aria-label="Default select example">
-                                <option selected disabled="paciente">Selecionar Laboratório</option>
+                        <div class="mb-2">
+                            <select id="laboratorio" name="laboratorio" class="form-select" required>
+                                <option selected disabled value="">Selecionar Laboratório</option>
                                 <?php
                                 require("conexao.php");
                                 $id_paciente = $_SESSION['id'];
@@ -53,14 +61,39 @@ require("cabecalho.php");
                                 }
                                 ?>
                             </select>
+                            <div class="invalid-feedback">
+                                Selecione o laboratório de preferência!
+                            </div>
                         </div>
                     </div>
 
-                    <input type="submit" name="btnCadastrar" class="btn btn-block create-account btn-primary" value="Cadastrar">
+                    <input type="submit" name="btnCadastrar" class="btn btn-block create-account btn-primary" value="Agendar">
                 </div>
             </div>
         </div>
     </form>
 </div>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
 
 <?php require("rodape.php"); ?>

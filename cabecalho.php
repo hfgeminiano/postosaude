@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Popper JS -->
@@ -23,7 +24,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand ms-auto mb-2 mb-lg-0" href="#">
+      <a class="navbar-brand ms-auto mb-2 mb-lg-0" href="posto.php">
         <img src="img/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
         Consulta Fácil
       </a>
@@ -58,7 +59,7 @@
               REQUERIMENTO
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Assistência Domiciliar</a></li>
+              <li><a class="dropdown-item" href="form_assistencia.php">Assistência Domiciliar</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

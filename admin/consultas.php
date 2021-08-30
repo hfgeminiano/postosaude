@@ -11,9 +11,14 @@ require("logado.php");
 </header>
 <div class="row">
     <div class="container mt-5">
-
+        <?php
+        if (isset($_SESSION['msg'])) {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+        ?>
         <div class="col-md-16">
-            <h3 class="text-center text-info">Consultas Pre Agendadas</h3>
+            <h3 class="text-center text-info">Consultas Pré Agendadas</h3>
             <table class="table">
                 <thead>
                     <tr>
@@ -21,6 +26,7 @@ require("logado.php");
                         <th>Nome</th>
                         <th>Motivo</th>
                         <th>Dia</th>
+                        <th>Aprovar</th>
                     </tr>
                 </thead>
                 <?php
@@ -43,8 +49,6 @@ require("logado.php");
                         <td>' . $dia . '</td>
                         <td>
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="' . $id . '" data-whatevernome="' . $nome . '" data-whateverdia="' . $dia . '">Aprovar</button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="' . $id . '" data-whatevernome="' . $nome . '" data-whatevercrm="' . $dia . '">Remarcar</button>
-
                         </td>
                     </tr>';
                     }
@@ -62,9 +66,7 @@ require("logado.php");
                         <td>' . $motivo . '</td>
                         <td>' . $dia . '</td>
                         <td>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"  data-whatever="' . $id . '" data-whatevernome="' . $dia . '" data-whateverdia="' . $dia . '">Aprovar</button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"  data-whatever="' . $id . '" data-whatevernome="' . $nome . '" data-whatevercrm="' . $dia . '">Remarcar</button>
-
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"  data-whatever="' . $id . '" data-whatevernome="' . $nome . '" data-whateverdia="' . $dia . '">Aprovar</button>
                         </td>
                     </tr>';
                     }
@@ -80,7 +82,7 @@ require("logado.php");
 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade needs-validation" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -92,8 +94,8 @@ require("logado.php");
             <div class="modal-body">
                 <form method="POST" action="aprovar_consulta.php" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="nome" class="col-form-label">Dia:</label>
-                        <input type="date" class="form-control" id="dia" name="dia">
+                        <label for="dia" class="col-form-label">Dia:</label>
+                        <input type="date" class="form-control" id="dia" name="dia" required>
                     </div>
                     <input type="hidden" id="id" name="id">
 

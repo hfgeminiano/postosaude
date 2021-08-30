@@ -48,7 +48,7 @@ if ($btnCadastrar) {
         )";
         $result_usuario = mysqli_query($conn, $result_usuario);
         if (mysqli_insert_id($conn)) {
-            $_SESSION['msgcad'] = "<div class='alert alert-primary'>Cadastrado com Sucesso!</div>";
+            $_SESSION['msg'] = "<div class='alert alert-primary'>Cadastrado com Sucesso!</div>";
             header("Location: index.php");
         } else {
             $_SESSION['msg'] = "Erro ao cadastrar";

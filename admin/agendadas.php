@@ -11,7 +11,12 @@ require("logado.php");
 </header>
 <div class="row">
     <div class="container mt-5">
-
+        <?php
+        if (isset($_SESSION['msg'])) {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+        ?>
         <div class="col-md-16">
             <h3 class="text-center text-info">Consultas Agendadas</h3>
             <table class="table">
@@ -21,6 +26,7 @@ require("logado.php");
                         <th>Nome</th>
                         <th>Motivo</th>
                         <th>Dia</th>
+                        <th>Atender</th>
                     </tr>
                 </thead>
                 <?php
@@ -62,7 +68,7 @@ require("logado.php");
                         <td>' . $motivo . '</td>
                         <td>' . $dia . '</td>
                         <td>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="' . $id . '" data-whatevernome="' . $dia . '" data-whateverdia="' . $dia . '">Atender</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="' . $id . '" data-whatevernome="' . $nome . '" data-whateverdia="' . $dia . '">Atender</button>
                         </td>
                     </tr>';
                     }
@@ -78,7 +84,7 @@ require("logado.php");
 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade needs-validations" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -91,8 +97,8 @@ require("logado.php");
                 <form method="POST" action="atender.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nome" class="col-form-label">Médico:</label>
-                        <select id="medico" name="medico" class="form-select" aria-label="Default select example">
-                            <option selected disabled="">Selecione o Médico</option>
+                        <select id="medico" name="medico" class="form-select" aria-label="Default select example" required>
+                            <option selected disabled value="">Selecione o Médico</option>
                             <?php
                             require("conexao.php");
                             $id_paciente = $_SESSION['id'];
@@ -106,7 +112,7 @@ require("logado.php");
                     </div>
                     <div class="form-group">
                         <label for="nome" class="col-form-label">Observação:</label>
-                        <textarea type="text" class="form-control" id="obs" name="obs"></textarea>
+                        <textarea type="text" class="form-control" id="obs" name="obs" required></textarea>
                     </div>
                     <input type="hidden" id="id" name="id">
                     <div class="modal-footer">

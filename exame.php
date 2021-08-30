@@ -15,7 +15,7 @@ mysqli_query($conn, $sql) or die("Erro ao tentar cadastrar registro");
 
 
 if (mysqli_close($conn)) {
-    $_SESSION['msgcad'] = "<div class='alert alert-success text-center'>Cadastrado com Sucesso! </div>";
+    $_SESSION['msgcad'] = "<div class='alert alert-success text-center'>Pedido de Exame efetuado com Sucesso! </div>";
     header("Location: formexame.php");
 } else {
     $_SESSION['msg'] = "Erro ao cadastrar";

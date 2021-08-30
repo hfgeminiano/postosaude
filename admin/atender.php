@@ -10,8 +10,8 @@ $result_consulta = "UPDATE consulta SET medico_id='$medico', estado='$estado',ob
 $result_consulta = mysqli_query($conn, $result_consulta);
 
 if (mysqli_close($conn)) {
-    $_SESSION['msgcad'] = "<div class='alert alert-primary'>Atendido com Sucesso!</div>";
-    header("Location: posto.php");
+    $_SESSION['msg'] = "<div class='alert alert-primary text-center'>Atendido com Sucesso!</div>";
+    header("Location: agendadas.php");
 } else {
     $_SESSION['msg'] = "Erro ao cadastrar";
 }

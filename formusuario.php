@@ -1,3 +1,5 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 <?php
 session_start();
 ob_start();
@@ -56,6 +58,8 @@ if ($btnCadastrar) {
         }
     }
 }
+
+
 ?>
 <div class="img">
     <img src="img/bg.png">
@@ -86,7 +90,29 @@ if ($btnCadastrar) {
             <input type="password" class="form-control item" id="senha" name="senha" placeholder="Senha">
         </div>
         <div class="mb-1">
-            <input type="text" class="form-control item" name="telefone" id="telefone" pattern="^\([1-9]{2}\) [9]{1}[0-9]{4,5}-[0-9]{4}$" onkeypress="$(this).mask('(00) 00000-0000')" placeholder="(00) 00000-0000">
+            <input type="text" class="form-control item" name="telefone" id="telefone" placeholder="Telefone ou Celular">
+            <script>
+                
+        jQuery("#telefone")
+        .mask("(99) 9999-9999?9")
+        .focusout(function (event) {  
+            var target, phone, element;  
+            target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+            phone = target.value.replace(/\D/g, '');
+            element = $(target);  
+            element.unmask();  
+            if(phone.length > 10) {  
+                element.mask("(99) 99999-999?9");  
+            } else {  
+                element.mask("(99) 9999-9999?9");  
+            }  
+        });
+
+        $(document).ready(function(){
+		$("#cpf").mask("999.999.999-99");
+        });
+        
+            </script>
         </div>
         <div class="mb-1">
             <select id="sexo" name="sexo" class="form-select" aria-label="Default select example">

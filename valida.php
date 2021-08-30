@@ -11,8 +11,7 @@ if ($btnAcessar) {
     if ((!empty($email)) and (!empty($senha))) {
 
         //echo password_hash($senha, PASSWORD_DEFAULT);
-        $result_usuario = "SELECT id, nome, email, senha,posto_id FROM usuario WHERE email='$email'
-        LIMIT 1";
+        $result_usuario = "SELECT id, nome, email, senha,posto_id,nivel FROM usuario WHERE email='$email' AND nivel=0 LIMIT 1";
         $resultado_usuario = mysqli_query($conn, $result_usuario);
         if ($resultado_usuario) {
             $row_usuario = mysqli_fetch_assoc($resultado_usuario);
@@ -21,6 +20,7 @@ if ($btnAcessar) {
                 $_SESSION['nome'] = $row_usuario['nome'];
                 $_SESSION['email'] = $row_usuario['email'];
                 $_SESSION['posto_id'] = $row_usuario['posto_id'];
+                $_SESSION['nivel'] = $row_usuario['nivel'];
                 header("Location: posto.php");
             } else {
                 $_SESSION['msg'] = "<div class='alert alert-danger'>Login ou senha incorreto!</div>";

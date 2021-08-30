@@ -23,7 +23,7 @@ if ($tipo_paciente == 0) {
 mysqli_query($conn, $sql) or die("Erro ao tentar cadastrar registro");
 
 if (mysqli_close($conn)) {
-    $_SESSION['msgcad'] = "<div class='alert alert-primary'>Cadastrado com Sucesso!</div>";
+    $_SESSION['msg'] = "<div class='alert alert-primary text-center'>Consulta Pré Agendada com Sucesso!</div>";
     header("Location: formconsulta.php");
 } else {
     $_SESSION['msg'] = "Erro ao cadastrar";

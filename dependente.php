@@ -6,9 +6,11 @@ $nome = $_POST['nome'];
 $nascimento = $_POST['nascimento'];
 $sexo = $_POST['sexo'];
 $id_usuario = $_SESSION['id'];
+$parentesco = $_POST['parentesco'];
+$identificacao = $_POST['identificacao'];
 include_once 'conexao.php';
-$sql = "INSERT INTO dependentes(nome,nascimento,sexo,usuario_id) VALUES ";
-$sql .= "('$nome','$nascimento','$sexo','$id_usuario')";
+$sql = "INSERT INTO dependentes(nome,nascimento,sexo,usuario_id,parentesco,identificacao) VALUES ";
+$sql .= "('$nome','$nascimento','$sexo','$id_usuario','$parentesco','$identificacao')";
 
 echo $nome, $nascimento, $sexo, $id_usuario, $sql;
 
